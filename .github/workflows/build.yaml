@@ -1,0 +1,21 @@
+name: hello from python
+
+on:
+  workflow_dispatch:
+
+
+jobs: 
+  
+  build:
+    name: docker build
+    runs-on: 'ubuntu-latest'
+
+    steps:
+      - name: "checkout repo"
+        uses: actions/checkout@v4
+      
+      - name: "docker build"
+        run: docker build -t poc .
+
+      - name: "run command"
+        run: docker run -it poc
