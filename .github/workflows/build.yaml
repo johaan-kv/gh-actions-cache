@@ -32,4 +32,5 @@ jobs:
         id: build_image
         run: |
           echo the webhook url is ${{ vars.SLACK_WEBHOOK_URL }}
+          echo $ENV
           echo end
