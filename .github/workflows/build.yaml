@@ -18,15 +18,14 @@ on:
     branches:
       - dev
       - stg
-      - main
 env:
-  ENV: ${{ github.event.inputs.environment || (github.ref_name == 'dev' && 'dev') || (github.ref_name == 'stg' && 'stg') || '' }}
+  ENV: ${{ github.event.inputs.environment }}
 
 jobs: 
   test-build:
     name: sample test build
     runs-on: "ubuntu-24.04"
-    environment: ${{ env.ENV }}
+    environment: $ENV
     timeout-minutes: 20
     steps:
       - name: build docker image
