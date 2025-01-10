@@ -25,7 +25,7 @@ jobs:
   test-build:
     name: sample test build
     runs-on: "ubuntu-24.04"
-    environment: $ENV
+    environment: ${{ github.event.inputs.environment }}
     timeout-minutes: 20
     steps:
       - name: build docker image
