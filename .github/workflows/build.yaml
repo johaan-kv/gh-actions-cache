@@ -30,5 +30,5 @@ jobs:
       - name: build docker image
         id: build_image
         run: |
-          echo the webhook url is ${{ env.SLACK_WEBHOOK_URL }}
+          echo the webhook url is ${{ vars.SLACK_WEBHOOK_URL }}
           echo end
