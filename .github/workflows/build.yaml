@@ -26,9 +26,9 @@ jobs:
     name: sample test build
     runs-on: "ubuntu-24.04"
     environment: |-
-      ${{
-           github.ref_name == 'dev' && 'dev'
-      ||   github.ref_name == 'stg' && 'stg'
+      ${{ 
+        github.events.inputs.environment != '' && github.events.inputs.environment ||
+        (github.ref_name == 'dev' && 'dev' || github.ref_name == 'stg' && 'stg')
       }}
     timeout-minutes: 20
     steps:
