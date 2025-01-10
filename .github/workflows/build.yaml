@@ -18,50 +18,9 @@ on:
     branches:
       - dev
       - stg
+      - main
 
 jobs: 
-  
-  # build:
-  #   name: docker build
-  #   runs-on: "ubuntu-24.04"
-  #   timeout-minutes: 20
-  #   outputs:
-  #     NAME: "SAMPLE NAME"
-  #
-  #   steps:
-  #     - name: "checkout repo"
-  #       uses: actions/checkout@v4
-  #
-  #     - name: Configure AWS credentials
-  #       uses: aws-actions/configure-aws-credentials@v4
-  #       with:
-  #         role-to-assume: ${{ secrets[env.AWS_ROLE] }}
-  #         aws-region: ${{ env.AWS_REGION }}
-  #
-  #     - name: Amazon ECR Login
-  #       id: login-ecr
-  #       uses: aws-actions/amazon-ecr-login@v2
-  #
-  #     - name: Build and push to Amazon ECR
-  #       id: build
-  #       uses: docker/build-push-action@v6
-  #       env:
-  #         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-  #         IMAGE_TAG: ${{ github.sha }}
-  #       with:
-  #         context: .
-  #         file: ./Dockerfile
-  #         push: true
-  #         platforms: linux/amd64
-  #         tags: ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}
-  #     - name: image name
-  #       id: image
-  #       env:
-  #         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-  #         IMAGE_TAG: ${{ github.sha }}
-  #       run: |
-  #         echo "APP_IMAGE=${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ github.sha }}"  >> $GITHUB_OUTPUT
-  #         # echo "MIGRATE_IMAGE=${{ env.ECR_REGISTRY }}/${{ env.MIGRATION_ECR_REPOSITORY }}:${{ github.sha }}"  >> $GITHUB_OUTPUT
   test-build:
     name: sample test build
     runs-on: "ubuntu-24.04"
