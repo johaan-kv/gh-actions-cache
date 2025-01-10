@@ -27,7 +27,7 @@ jobs:
     runs-on: "ubuntu-24.04"
     environment: |-
       ${{ 
-        github.events.inputs.environment ||
+        (github.event_name == "workflow_dispatch" && github.event.inputs.environment) ||
         (github.ref_name == 'dev' && 'dev' || github.ref_name == 'stg' && 'stg')
       }}
     timeout-minutes: 20
